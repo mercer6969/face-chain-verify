@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+node_modules/
+sample_data/crops/
+sample_data/evidence/
+sample_data/evidence_test/
+build/
+.DS_Store

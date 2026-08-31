@@ -1,0 +1,15 @@
+# --- Face detection & encoding (Step 1) ---
+opencv-python==4.13.0.92
+numpy==2.4.4
+
+# --- Web / social media search (Step 2) ---
+requests==2.33.1
+
+# --- Blockchain: hashing, deployment, notarization, verification (Step 4/5) ---
+web3==7.16.0
+eth-account==0.14.0
+eth-tester[py-evm]==0.14.0b1
+py-evm==0.12.1b1
+
+# --- Config ---
+python-dotenv==1.2.2

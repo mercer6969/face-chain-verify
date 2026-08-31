@@ -1,0 +1,12 @@
+{
+  "name": "face-chain-verify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Solidity compiler dependency for EvidenceRegistry.sol (compiled via scripts/compile.js)",
+  "scripts": {
+    "compile": "node scripts/compile.js"
+  },
+  "dependencies": {
+    "solc": "0.8.24"
+  }
+}
