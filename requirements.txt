@@ -8,7 +8,12 @@ requests==2.33.1
 # --- Blockchain: hashing, deployment, notarization, verification (Step 4/5) ---
 web3==7.16.0
 eth-account==0.14.0
-eth-tester[py-evm]==0.14.0b1
+# NOTE: intentionally NOT "eth-tester[py-evm]" -- that extra pulls in an
+# optional accelerated-hashing package (safe-pysha3) that has no prebuilt
+# wheel on some platforms (notably Windows) and fails to compile without
+# Microsoft C++ Build Tools installed. py-evm is listed explicitly below,
+# which is all eth-tester actually needs to run.
+eth-tester==0.14.0b1
 py-evm==0.12.1b1
 
 # --- Config ---

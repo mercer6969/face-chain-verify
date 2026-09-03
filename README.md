@@ -196,6 +196,30 @@ Fully offline, deterministic, and what this repo's own tests use. Every
 To reuse an already-deployed contract instead of redeploying on every run,
 set `CONTRACT_ADDRESS` in `.env` after your first deployment.
 
+## Troubleshooting
+
+**`pip install -r requirements.txt` fails trying to build `safe-pysha3`
+(needs "Microsoft C++ Build Tools")** — this was a bug in an earlier version
+of `requirements.txt`: it listed `eth-tester[py-evm]`, and that `[py-evm]`
+extra pulls in an optional accelerated-hashing package with no prebuilt wheel
+on Windows. Current `requirements.txt` lists plain `eth-tester` (with
+`py-evm` already listed separately, which is all it actually needs), so this
+shouldn't occur — if you still see it, run
+`pip install --no-deps -r requirements.txt` after a normal install, or
+`pip install eth-tester==0.14.0b1` (no brackets) manually.
+
+**`ModuleNotFoundError: No module named 'cv2'` (or any other module) right
+after running `pip install`** — pip only installs packages after it has
+successfully resolved and built *every* wheel in the requirements file; if
+one package fails to build, pip aborts and installs *nothing*, even packages
+that downloaded fine. Scroll up in the pip output to find the actual build
+error (it's usually higher up, not the last few lines) and fix that first —
+the missing-module error is a downstream symptom, not the real problem.
+
+**Windows: `pip` is not recognized** — use `py -m pip install -r requirements.txt`
+(or `python -m pip ...`) instead; the `py` launcher is what's on PATH by
+default on many Windows Python installs.
+
 ## Known limitations & assumptions
 
 - **Face encoding is a classical CV descriptor (HOG), not a deep embedding.**
